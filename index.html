@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Headline Central</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="main-nav container flex">
+        <a href="#" onclick="reload()" class="company-logo">
+          <img src="./assets/logo.png" alt="company logo" />
+        </a>
+        <div class="nav-links">
+          <ul class="flex">
+            <li
+              class="hover-link nav-item"
+              id="general"
+              onclick="onNavItemClick('general')"
+            >
+              General
+            </li>
+            <li
+              class="hover-link nav-item"
+              id="health"
+              onclick="onNavItemClick('health')"
+            >
+              Health
+            </li>
+            <li
+              class="hover-link nav-item"
+              id="business"
+              onclick="onNavItemClick('business')"
+            >
+              Business
+            </li>
+            <li
+              class="hover-link nav-item"
+              id="politics"
+              onclick="onNavItemClick('politics')"
+            >
+              Politics
+            </li>
+            <li
+              class="hover-link nav-item"
+              id="sports"
+              onclick="onNavItemClick('sports')"
+            >
+              Sports
+            </li>
+            <li
+              class="hover-link nav-item"
+              id="entertainment"
+              onclick="onNavItemClick('entertainment')"
+            >
+              Entertainment
+            </li>
+            <li
+              class="hover-link nav-item"
+              id="technology"
+              onclick="onNavItemClick('technology')"
+            >
+              Technology
+            </li>
+          </ul>
+        </div>
+        <div class="search-bar flex">
+          <input
+            id="search-text"
+            type="text"
+            class="news-input"
+            placeholder="e.g. Science, UPSC, IIT-JEE..."
+          />
+          <button id="search-button" class="search-button">Search</button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="cards-container container flex" id="cards-container"></div>
+    </main>
+
+    <template id="template-news-card">
+      <div class="card">
+        <div class="card-header">
+          <img
+            src="https://via.placeholder.com/400x200"
+            alt="news-image"
+            id="news-img"
+          />
+        </div>
+        <div class="card-content">
+          <h3 id="news-title">Title</h3>
+          <h6 class="news-source" id="news-source">End Gadget 16/03/2023</h6>
+          <p class="news-desc" id="news-desc">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+            saepe quis voluptatum quisquam vitae doloremque facilis molestias
+            quae ratione cumque!
+          </p>
+        </div>
+      </div>
+    </template>
+
+    <div class="alan-btn"></div>
+    <script
+      type="text/javascript"
+      src="https://studio.alan.app/web/lib/alan_lib.min.js"
+    ></script>
+    <script>
+      var alanBtnInstance = alanBtn({
+        key: "1184599c7d0071a0ef651c05eba96cc32e956eca572e1d8b807a3e2338fdd0dc/stage",
+        onCommand: function (commandData) {
+          let curSelectedNav = null;
+          fetchNews(commandData.data);
+          curSelectedNav?.classList.remove("active");
+          const navItem = document.getElementById(commandData.data);
+          curSelectedNav = navItem;
+          curSelectedNav.classList.add("active");
+        },
+        rootEl: document.getElementById("alan-btn"),
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
